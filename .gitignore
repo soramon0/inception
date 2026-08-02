@@ -1,0 +1,6 @@
+# Secrets — never commit real passwords
+secrets/*
+!secrets/.gitkeep
+
+# Local artifacts
+data/
