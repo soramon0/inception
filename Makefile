@@ -36,11 +36,11 @@ logs:
 ps:
 	$(COMPOSE) ps
 
-clean: down
-	$(COMPOSE) down -v --remove-orphans
+clean:
+	$(COMPOSE) down -v --rmi all --remove-orphans
 
 fclean: clean
-	@docker system prune -af --volumes 2>/dev/null || true
-	@rm -rf $(DATA_PATH)/mariadb $(DATA_PATH)/wordpress
+	@docker run --rm -v $(DATA_PATH):/data alpine:3.23 \
+		sh -c "rm -rf /data/mariadb /data/wordpress"
 
 re: fclean all

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>klaayoun — Inception</title>
+	<style>
+		:root { --bg: #0f1419; --fg: #e7ecf1; --accent: #3d9a78; --muted: #8b9aab; }
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		body {
+			min-height: 100vh;
+			font-family: "Segoe UI", system-ui, sans-serif;
+			background: radial-gradient(ellipse at top, #1a2836 0%, var(--bg) 60%);
+			color: var(--fg);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+		}
+		main { max-width: 36rem; text-align: center; }
+		h1 { font-size: clamp(2.5rem, 8vw, 4rem); letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+		h1 span { color: var(--accent); }
+		p { color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+		ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+		li { border: 1px solid #2a3a4a; padding: 0.4rem 0.9rem; font-size: 0.85rem; }
+	</style>
+</head>
+<body>
+	<main>
+		<h1><span>klaayoun</span></h1>
+		<p>Static showcase for the 42 Inception stack — NGINX, WordPress, MariaDB, and bonus services.</p>
+		<ul>
+			<li>NGINX + TLS</li>
+			<li>WordPress</li>
+			<li>MariaDB</li>
+			<li>Redis</li>
+			<li>FTP</li>
+			<li>Adminer</li>
+			<li>cAdvisor</li>
+		</ul>
+	</main>
+</body>
+</html>
