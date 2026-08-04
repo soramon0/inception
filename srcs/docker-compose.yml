@@ -8,8 +8,6 @@ services:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -30,8 +28,6 @@ services:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -92,8 +88,6 @@ services:
       context: ./requirements/bonus/ftp
       dockerfile: Dockerfile
     restart: unless-stopped
-    env_file:
-      - .env
     environment:
       FTP_USER: ${FTP_USER}
     secrets:

@@ -1,7 +1,6 @@
-NAME		= inception
+NAME			= inception
 COMPOSE		= docker compose -f srcs/docker-compose.yml --env-file srcs/.env
-# change username later to klaayoun
-DATA_PATH	= /home/sora/data
+DATA_PATH	= /home/sora/data # change username later to klaayoun
 
 .PHONY: all up down build stop start logs ps clean fclean re data secrets-check
 
@@ -40,7 +39,6 @@ clean:
 	$(COMPOSE) down -v --rmi all --remove-orphans
 
 fclean: clean
-	@docker run --rm -v $(DATA_PATH):/data alpine:3.23 \
-		sh -c "rm -rf /data/mariadb /data/wordpress"
+	@docker run --rm -v $(DATA_PATH):/data alpine:3.23 sh -c "rm -rf /data/mariadb /data/wordpress"
 
 re: fclean all

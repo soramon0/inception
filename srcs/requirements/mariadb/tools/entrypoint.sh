@@ -4,9 +4,6 @@ set -e
 DB_ROOT_PASSWORD="$(tr -d '\r\n' < /run/secrets/db_root_password)"
 DB_PASSWORD="$(tr -d '\r\n' < /run/secrets/db_password)"
 
-# Compose env_file sets MYSQL_HOST=mariadb; that must not affect local socket clients
-unset MYSQL_HOST
-
 MYSQL="mysql --protocol=socket --socket=/run/mysqld/mysqld.sock"
 MYSQLADMIN="mysqladmin --protocol=socket --socket=/run/mysqld/mysqld.sock"
 
