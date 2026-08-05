@@ -7,7 +7,7 @@ RUN apk add --no-cache nginx openssl \
 		-out /etc/nginx/ssl/klaayoun.crt \
 		-subj "/C=MA/ST=KH/L=Khouribga/O=42/OU=42/CN=klaayoun.42.fr"
 
-COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
 EXPOSE 443
 
