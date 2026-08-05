@@ -88,4 +88,4 @@ srcs/requirements/{nginx,wordpress,mariadb,bonus/...}
 
 ### AI usage
 
-AI assisted with structuring Dockerfiles/entrypoints, Compose wiring, and drafting README / USER_DOC / DEV_DOC. Configs were reviewed against subject constraints (no `latest`, no passwords in Dockerfiles, named volumes, TLS-only 443, no infinite-loop PID 1 hacks) for login `klaayoun`.
+AI was used to research topics (Docker secrets, NGINX TLS configuration, WP-CLI, Docker named volumes vs bind mounts, PID 1 best practices) and to generate documentation (README / USER_DOC / DEV_DOC) and initial drafts of Dockerfiles.
