@@ -32,7 +32,6 @@ WORKDIR /var/www/html
 COPY conf/www.conf /etc/php83/php-fpm.d/www.conf
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh \
-	&& mkdir -p /var/www/html \
 	&& chown -R nobody:nobody /var/www/html
 
 EXPOSE 9000

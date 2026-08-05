@@ -8,9 +8,6 @@ RUN apk add --no-cache ca-certificates curl \
 		-o /usr/local/bin/cadvisor \
 	&& chmod +x /usr/local/bin/cadvisor
 
-COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/cadvisor", "--port=8080", "--docker_only=true", "--housekeeping_interval=30s"]
