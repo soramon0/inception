@@ -1,0 +1,6 @@
+# Loaded after Alpine's own /etc/my.cnf.d/mariadb-server.cnf (alphabetically
+# later). Alpine ships that file with `skip-networking` enabled, which
+# disables all TCP connections and would make mariadb unreachable from the
+# other containers (wordpress, adminer).
+[mysqld]
+skip-networking=0

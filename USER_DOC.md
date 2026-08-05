@@ -2,16 +2,16 @@
 
 ## Services
 
-| Service | Role | How to reach it |
-|---------|------|-----------------|
-| NGINX | HTTPS entrypoint (TLS 1.2/1.3) | `https://klaayoun.42.fr` |
-| WordPress | Site + admin (php-fpm) | `https://klaayoun.42.fr/wp-admin` |
-| MariaDB | Database | Internal only (`mariadb:3306`) |
-| Redis | Object cache | Internal only |
-| Adminer | DB web UI | `https://adminer.klaayoun.42.fr` or `http://localhost:8081` |
-| Static site | Showcase page | `https://static.klaayoun.42.fr` or `http://localhost:8080` |
-| FTP | Edit WordPress files | `ftp://localhost` (`FTP_USER` from `.env`) |
-| cAdvisor | Container metrics | `http://localhost:8082` |
+| Service     | Role                           | How to reach it                                             |
+| ----------- | ------------------------------ | ----------------------------------------------------------- |
+| NGINX       | HTTPS entrypoint (TLS 1.2/1.3) | `https://klaayoun.42.fr`                                    |
+| WordPress   | Site + admin (php-fpm)         | `https://klaayoun.42.fr/wp-admin`                           |
+| MariaDB     | Database                       | Internal only (`mariadb:3306`)                              |
+| Redis       | Object cache                   | Internal only                                               |
+| Adminer     | DB web UI                      | `https://adminer.klaayoun.42.fr` or `http://localhost:8081` |
+| Static site | Showcase page                  | `https://static.klaayoun.42.fr` or `http://localhost:8080`  |
+| FTP         | Edit WordPress files           | `ftp://localhost` (`FTP_USER` from `.env`)                  |
+| cAdvisor    | Container metrics              | `http://localhost:8082`                                     |
 
 ## Start and stop
 
@@ -38,11 +38,11 @@ make start
 
 ## Credentials
 
-| Secret | File |
-|--------|------|
-| MariaDB root | `secrets/db_root_password.txt` |
-| MariaDB app user | `secrets/db_password.txt` |
-| WP admin / WP user / FTP | `secrets/credentials.txt` |
+| Secret                   | File                           |
+| ------------------------ | ------------------------------ |
+| MariaDB root             | `secrets/db_root_password.txt` |
+| MariaDB app user         | `secrets/db_password.txt`      |
+| WP admin / WP user / FTP | `secrets/credentials.txt`      |
 
 Non-secret names live in `srcs/.env`. Never commit real passwords.
 

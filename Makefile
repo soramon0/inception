@@ -1,6 +1,6 @@
 NAME			= inception
 COMPOSE		= docker compose -f srcs/docker-compose.yml --env-file srcs/.env
-DATA_PATH	= /home/sora/data # change username later to klaayoun
+DATA_PATH	= $(shell grep '^DATA_PATH=' srcs/.env | cut -d '=' -f2)
 
 .PHONY: all up down build stop start logs ps clean fclean re data secrets-check
 

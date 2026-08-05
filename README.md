@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by klaayoun.*
+_This project has been created as part of the 42 curriculum by klaayoun._
 
 # Inception
 
@@ -59,12 +59,12 @@ On the evaluation VM, set `DATA_PATH` / volume `device` paths to `/home/klaayoun
 
 ### Comparisons
 
-| Topic | Choice |
-|-------|--------|
-| **VMs vs Docker** | A VM virtualizes hardware/OS; containers share the host kernel and isolate processes. This project runs Docker inside a VM as required. |
-| **Secrets vs env vars** | Env vars are convenient but visible in inspect/process lists. Secrets mount as files under `/run/secrets` and stay out of images/git. Non-secrets stay in `.env`. |
-| **Docker network vs host network** | A user-defined bridge (`inception`) gives DNS between services. `network: host` / `network_mode: host` is forbidden — it removes network isolation. |
-| **Volumes vs bind mounts** | Named volumes are managed by Docker; we set their device path to the host data dir. Raw bind mounts for the two mandatory stores are not allowed. |
+| Topic                              | Choice                                                                                                                                                            |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **VMs vs Docker**                  | A VM virtualizes hardware/OS; containers share the host kernel and isolate processes. This project runs Docker inside a VM as required.                           |
+| **Secrets vs env vars**            | Env vars are convenient but visible in inspect/process lists. Secrets mount as files under `/run/secrets` and stay out of images/git. Non-secrets stay in `.env`. |
+| **Docker network vs host network** | A user-defined bridge (`inception`) gives DNS between services. `network: host` / `network_mode: host` is forbidden — it removes network isolation.               |
+| **Volumes vs bind mounts**         | Named volumes are managed by Docker; we set their device path to the host data dir. Raw bind mounts for the two mandatory stores are not allowed.                 |
 
 ### Sources layout
 

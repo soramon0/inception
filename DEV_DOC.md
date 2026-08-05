@@ -4,7 +4,7 @@
 
 - Docker Engine + Compose v2
 - `make`
-- Writable host data path (`DATA_PATH` in Makefile / volume `device` in Compose)
+- Writable host data path (`DATA_PATH` in `srcs/.env`, used by the Makefile and by Compose's volume `device`)
 - Secrets under `secrets/`
 
 ## Setup from scratch
@@ -23,21 +23,21 @@
    ```
 
 3. Review `srcs/.env` (domain, usernames — no passwords).
-4. On the evaluation VM, set data paths to `/home/klaayoun/data` in the Makefile and Compose volume `device` lines.
+4. Set `DATA_PATH` in `srcs/.env` to `/home/<login>/data`; the Makefile and Compose both read this single value.
 5. Add hosts entries for `klaayoun.42.fr`, `adminer.klaayoun.42.fr`, `static.klaayoun.42.fr`.
 6. `make`
 
 ## Makefile / Compose
 
-| Target | Action |
-|--------|--------|
-| `make` / `make up` | Create data dirs, build, start |
-| `make build` | Build images |
-| `make down` | Stop and remove containers |
-| `make clean` | `down` + remove named volumes |
-| `make fclean` | `clean` + prune + delete host data dirs |
-| `make re` | Full rebuild |
-| `make logs` / `make ps` | Logs / status |
+| Target                  | Action                                  |
+| ----------------------- | --------------------------------------- |
+| `make` / `make up`      | Create data dirs, build, start          |
+| `make build`            | Build images                            |
+| `make down`             | Stop and remove containers              |
+| `make clean`            | `down` + remove named volumes           |
+| `make fclean`           | `clean` + prune + delete host data dirs |
+| `make re`               | Full rebuild                            |
+| `make logs` / `make ps` | Logs / status                           |
 
 Compose: `srcs/docker-compose.yml`  
 Env: `srcs/.env`  
@@ -51,12 +51,12 @@ docker compose -f srcs/docker-compose.yml --env-file srcs/.env logs -f mariadb
 
 ## Data persistence
 
-| Volume | Container path | Host path (current) |
-|--------|----------------|---------------------|
-| `db_data` | `/var/lib/mysql` | `/home/sora/data/mariadb` |
-| `wp_data` | `/var/www/html` | `/home/sora/data/wordpress` |
+| Volume    | Container path   | Host path                |
+| --------- | ---------------- | ------------------------ |
+| `db_data` | `/var/lib/mysql` | `${DATA_PATH}/mariadb`   |
+| `wp_data` | `/var/www/html`  | `${DATA_PATH}/wordpress` |
 
-On evaluation, both host paths must be under `/home/klaayoun/data`. Wipe with `make fclean`.
+`DATA_PATH` is set once in `srcs/.env` (currently `/home/klaayoun/data`) and used by both the Makefile (`mkdir`, `fclean`) and Compose (volume `device`). Wipe with `make fclean`.
 
 ## Service layout
 
