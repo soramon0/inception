@@ -1,7 +1,7 @@
 FROM alpine:3.23
 
 RUN apk add --no-cache nginx openssl \
-	&& mkdir -p /etc/nginx/ssl /var/www/html /run/nginx \
+	&& mkdir -p /etc/nginx/ssl \
 	&& openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 		-keyout /etc/nginx/ssl/klaayoun.key \
 		-out /etc/nginx/ssl/klaayoun.crt \
