@@ -21,10 +21,14 @@ wp() {
 	php -d memory_limit=512M /usr/local/bin/wp "$@"
 }
 
-cd /var/www/html
-
 echo "[wordpress] Waiting for MariaDB..."
+i=0
 until mysqladmin ping -h"${MYSQL_HOST}" -u"${MYSQL_USER}" -p"${DB_PASSWORD}" --silent 2>/dev/null; do
+	i=$((i + 1))
+	if [ "$i" -ge 60 ]; then
+		echo "[wordpress] Timed out waiting for MariaDB" >&2
+		exit 1
+	fi
 	sleep 2
 done
 echo "[wordpress] MariaDB is up."
