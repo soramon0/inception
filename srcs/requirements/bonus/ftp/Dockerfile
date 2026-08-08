@@ -10,3 +10,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 21 21000-21010
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

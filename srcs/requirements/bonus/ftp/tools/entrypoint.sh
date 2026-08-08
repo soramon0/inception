@@ -18,4 +18,4 @@ echo "${FTP_USER}:${FTP_PASSWORD}" | chpasswd
 echo "${FTP_USER}" > /etc/vsftpd.userlist
 chown -R "${FTP_USER}:${FTP_USER}" /var/www/html
 
-exec /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+exec "$@"

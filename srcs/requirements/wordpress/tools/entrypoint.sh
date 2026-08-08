@@ -72,4 +72,4 @@ else
 	echo "[wordpress] Already installed."
 fi
 
-exec php-fpm83 -F
+exec "$@"

@@ -61,4 +61,4 @@ elif [ ! -d "/var/lib/mysql/${MYSQL_DATABASE}" ]; then
 	echo "[mariadb] Repair complete."
 fi
 
-exec mysqld --user=mysql
+exec "$@"
