@@ -41,7 +41,6 @@ if [ "$1" = "mysqld" ]; then
 				GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 				FLUSH PRIVILEGES;
 			EOSQL
-			$MYSQLADMIN -u root -p"${DB_ROOT_PASSWORD}" shutdown
 		else
 			$MYSQL -u root -p"${DB_ROOT_PASSWORD}" <<-EOSQL
 				CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;
@@ -50,8 +49,8 @@ if [ "$1" = "mysqld" ]; then
 				GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';
 				FLUSH PRIVILEGES;
 			EOSQL
-			$MYSQLADMIN -u root -p"${DB_ROOT_PASSWORD}" shutdown
 		fi
+		$MYSQLADMIN -u root -p"${DB_ROOT_PASSWORD}" shutdown
 
 		wait "$pid" || true
 	}
