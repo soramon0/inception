@@ -2,6 +2,10 @@ NAME			= inception
 COMPOSE		= docker compose -f srcs/docker-compose.yml --env-file srcs/.env
 DATA_PATH	= $(shell grep '^DATA_PATH=' srcs/.env | cut -d '=' -f2)
 
+ifeq ($(strip $(DATA_PATH)),)
+$(error DATA_PATH is empty or missing in srcs/.env)
+endif
+
 .PHONY: all up down build stop start logs ps clean fclean re data secrets-check
 
 all: up
