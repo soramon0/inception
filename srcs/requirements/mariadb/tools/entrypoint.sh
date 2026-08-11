@@ -7,8 +7,14 @@ if [ "${1#-}" != "$1" ]; then
 fi
 
 if [ "$1" = "mysqld" ]; then
+	: "${MYSQL_DATABASE:?MYSQL_DATABASE is required}"
+	: "${MYSQL_USER:?MYSQL_USER is required}"
+
 	DB_ROOT_PASSWORD="$(tr -d '\r\n' < /run/secrets/db_root_password)"
 	DB_PASSWORD="$(tr -d '\r\n' < /run/secrets/db_password)"
+
+	: "${DB_ROOT_PASSWORD:?db_root_password secret is empty}"
+	: "${DB_PASSWORD:?db_password secret is empty}"
 
 	MYSQL="mysql --protocol=socket --socket=/run/mysqld/mysqld.sock"
 	MYSQLADMIN="mysqladmin --protocol=socket --socket=/run/mysqld/mysqld.sock"

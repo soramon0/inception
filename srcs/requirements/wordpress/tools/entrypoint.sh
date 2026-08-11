@@ -6,6 +6,16 @@ if [ "${1#-}" != "$1" ]; then
 fi
 
 if [ "$1" = "php-fpm83" ]; then
+	: "${MYSQL_DATABASE:?MYSQL_DATABASE is required}"
+	: "${MYSQL_USER:?MYSQL_USER is required}"
+	: "${MYSQL_HOST:?MYSQL_HOST is required}"
+	: "${DOMAIN_NAME:?DOMAIN_NAME is required}"
+	: "${WP_TITLE:?WP_TITLE is required}"
+	: "${WP_ADMIN_USER:?WP_ADMIN_USER is required}"
+	: "${WP_ADMIN_EMAIL:?WP_ADMIN_EMAIL is required}"
+	: "${WP_USER:?WP_USER is required}"
+	: "${WP_USER_EMAIL:?WP_USER_EMAIL is required}"
+
 	DB_PASSWORD="$(tr -d '\r\n' < /run/secrets/db_password)"
 
 	WP_ADMIN_PASSWORD=""
@@ -20,6 +30,10 @@ if [ "$1" = "php-fpm83" ]; then
 			WP_USER_PASSWORD) WP_USER_PASSWORD="$value" ;;
 		esac
 	done < /run/secrets/credentials
+
+	: "${DB_PASSWORD:?db_password secret is empty}"
+	: "${WP_ADMIN_PASSWORD:?WP_ADMIN_PASSWORD is required in credentials}"
+	: "${WP_USER_PASSWORD:?WP_USER_PASSWORD is required in credentials}"
 
 	# WP-CLI needs more than the default 128M to extract WordPress
 	wp() {
