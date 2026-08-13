@@ -6,4 +6,5 @@ COPY conf/redis.conf /etc/redis.conf
 
 EXPOSE 6379
 
-ENTRYPOINT ["redis-server", "/etc/redis.conf"]
+ENTRYPOINT ["redis-server"]
+CMD ["/etc/redis.conf"]

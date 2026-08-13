@@ -10,4 +10,5 @@ RUN apk add --no-cache ca-certificates curl \
 
 EXPOSE 8080
 
-ENTRYPOINT ["/usr/local/bin/cadvisor", "--port=8080", "--docker_only=true", "--housekeeping_interval=30s"]
+ENTRYPOINT ["/usr/local/bin/cadvisor"]
+CMD ["--port=8080", "--docker_only=true", "--housekeeping_interval=30s"]

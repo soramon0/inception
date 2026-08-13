@@ -17,4 +17,5 @@ WORKDIR /var/www/adminer
 
 EXPOSE 8080
 
-ENTRYPOINT ["php", "-S", "0.0.0.0:8080", "-t", "/var/www/adminer"]
+ENTRYPOINT ["php"]
+CMD ["-S", "0.0.0.0:8080", "-t", "/var/www/adminer"]
