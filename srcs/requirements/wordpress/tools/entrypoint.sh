@@ -85,7 +85,7 @@ if [ "$1" = "php-fpm83" ]; then
 		wp plugin install redis-cache --activate --allow-root || true
 		wp redis enable --allow-root || true
 
-		chown -R nobody:nobody /var/www/html
+		chown -R www:www /var/www/html
 		echo "[wordpress] Installation complete."
 	else
 		echo "[wordpress] Already installed."

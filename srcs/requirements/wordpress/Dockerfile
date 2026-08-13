@@ -21,7 +21,9 @@ RUN apk add --no-cache \
 	php83-redis \
 	curl \
 	mariadb-client \
-	&& ln -sf /usr/bin/php83 /usr/bin/php
+	&& ln -sf /usr/bin/php83 /usr/bin/php \
+	&& addgroup -g 1000 www \
+	&& adduser -D -H -u 1000 -G www -s /sbin/nologin www
 
 RUN curl -fsSL https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
 	-o /usr/local/bin/wp \
@@ -32,7 +34,7 @@ WORKDIR /var/www/html
 COPY conf/www.conf /etc/php83/php-fpm.d/www.conf
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh \
-	&& chown -R nobody:nobody /var/www/html
+	&& chown -R www:www /var/www/html
 
 EXPOSE 9000
 

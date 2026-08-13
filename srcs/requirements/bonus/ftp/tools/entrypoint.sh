@@ -21,7 +21,8 @@ if [ "$1" = "/usr/sbin/vsftpd" ] || [ "$1" = "vsftpd" ]; then
 	: "${FTP_PASSWORD:?FTP_PASSWORD is required in credentials}"
 
 	if ! id -u "${FTP_USER}" >/dev/null 2>&1; then
-		adduser -D -h /var/www/html -s /sbin/nologin "${FTP_USER}"
+		addgroup -g 1000 "${FTP_USER}"
+		adduser -D -u 1000 -G "${FTP_USER}" -h /var/www/html -s /sbin/nologin "${FTP_USER}"
 	fi
 	echo "${FTP_USER}:${FTP_PASSWORD}" | chpasswd
 	echo "${FTP_USER}" > /etc/vsftpd.userlist
