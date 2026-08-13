@@ -29,15 +29,15 @@
 
 ## Makefile / Compose
 
-| Target                  | Action                                  |
-| ----------------------- | --------------------------------------- |
-| `make` / `make up`      | Create data dirs, build, start          |
-| `make build`            | Build images                            |
-| `make down`             | Stop and remove containers              |
-| `make clean`            | `down` + remove named volumes           |
-| `make fclean`           | `clean` + prune + delete host data dirs |
-| `make re`               | Full rebuild                            |
-| `make logs` / `make ps` | Logs / status                           |
+| Target                  | Action                                                             |
+| ----------------------- | ------------------------------------------------------------------ |
+| `make` / `make up`      | Create data dirs, build, start                                     |
+| `make build`            | Build images                                                       |
+| `make down`             | Stop and remove containers                                         |
+| `make clean`            | `down -v --rmi all --remove-orphans` (containers, volumes, images) |
+| `make fclean`           | `clean` + delete `$DATA_PATH/mariadb` and `$DATA_PATH/wordpress`   |
+| `make re`               | Full rebuild                                                       |
+| `make logs` / `make ps` | Logs / status                                                      |
 
 Compose: `srcs/docker-compose.yml`  
 Env: `srcs/.env`  

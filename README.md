@@ -35,8 +35,8 @@ secrets/credentials.txt        # WP_ADMIN_PASSWORD=...
 ```bash
 make          # create data dirs, build, start
 make down     # stop containers
-make clean    # down + remove volumes
-make fclean   # clean + prune + wipe data
+make clean    # down + remove volumes and images
+make fclean   # clean + wipe $DATA_PATH/mariadb and wordpress
 make re       # fclean then up
 make logs
 make ps
